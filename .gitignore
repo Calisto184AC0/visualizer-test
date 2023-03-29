@@ -35,3 +35,9 @@ yarn-error.log*
 
 # vscode config
 .vscode
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/__e2e__/screenshots/
