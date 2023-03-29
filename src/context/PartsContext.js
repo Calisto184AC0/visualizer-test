@@ -6,7 +6,7 @@ const PartsContext = createContext(null)
 export const useParts = () => {
   const context = useContext(PartsContext)
 
-  if (!context) throw new Error('Threre is no Firestore provider')
+  if (!context) throw new Error('Threre is no Parts provider')
 
   return context
 }
