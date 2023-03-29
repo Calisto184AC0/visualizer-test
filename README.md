@@ -1,69 +1,20 @@
-# Estudio Cactus Fullstack Test
+# Prueba técnica Estudio Cactus
 
-This is a test to validate the knowledge of the candidates for the position of fullstack developer at Estudio Cactus
+Características:
+- Testing unitarios y end to end (vitest, react-testing-library y playwright)
+- Custom hooks para separar la lógica de la vista
+- Context para compartir en toda la aplicación el estado de los puntos y los materiales
 
-## Stack
+Cuando se inicia la aplicación se obtiene de Firebase los puntos y los materiales y se crean varios estados para guardar las coordenadas de los puntos y agrupar los materiales por partes de la cocina (en el código se muestra como "Parts"). Para identificar las partes he usado los identificadores de los puntos.
 
-- React
-- NextJS
-- Firebase
-- Tailwindcss
+He hecho pruebas unitarias a un solo componente de sus características y una prueba para comprobar el correcto funcionamiento de cambiar el material.
 
-## Description
+## Alternativas
 
-In this case the test consists of creating a 3d room configurator. In the following link you can see an example of how the configurator should look like: https://app.estudiocactus.com/visualizer.mp4
+Primero, podría haber creado una api con Next.js y hacer SSR para obtener la información de Firebase al recibir una petición del usuario y enviarlo ya completo. Pero de esta forma si hubiera un montón de imágenes y diferentes capas el usuario tendría que esperar mucho tiempo y solo vería una pantalla en blanco.
 
-Following you have a detailed layout of the data needed to pass the test:
+Segundo, en vez de usar un Context podría haber optado por realizar todo el trabajo en el page/index.js y pasar los props a cada componente. Pero opté por usar context porque pensé al principio que iba a necesitar el estado en componentes más profundos y de este modo me hubierá ahorrado el problema del prop drilling. Aunque es cierto, que al final, con el tamaño de este proyecto, no era necesario el Context. Pero si en un futuro se quiere añadir más funcionalidades el Context puede ser útil.
 
-Base image url: https://firebasestorage.googleapis.com/v0/b/visualizer-new-devs-test.appspot.com/o/base.jpeg?alt=media&token=358ccdea-3cf9-4751-ae48-4631e4700554
+Y por último, se podría usar el hook useReducer para manejar los diferentes estados creados en el Context. De este modo tendríamos un mejor manejo del estado global y no tendríamos que crear tantos estados.
 
-Coordinates to draw the points over the base image:
-
-```
-.
-└── firestore(/)
-    └── points (collection)
-```
-
-List of all materials (TIP: You have to think about the right query to get all the materials for a specific point -> Firestore allows array-contains queries)
-
-```
-.
-└── firestore(/)
-    └── materials (collection)
-```
-
-The credentials for the Firebase connection are located at
-
-```
-.
-└── firebase
-    └── config
-```
-
-## Requirements
-
-1. Use StandardJS as a linter
-2. Code should be completely in english ( filenames, variables)
-
-**IMPORTANT:** We won't accept code with harcoded databaes values (e.g. document id's to make comparisons, url's for background images etc)
-
-## How to start?
-
-1. Create a new repo using this one as a base(without forking)
-2. Make at least 1 first commit with the original code, to see the init hour.
-3. Make individiual commits for each block you create. The last commit marks the end.
-4. Send us a link to your repo.
-5. Deploy your repo to vercel.
-6. Send us a link to the deployed project.
-
-## What we value?
-
-- Simplicity of the solution
-- Organization and clean code
-- Utilization of components
-- Mobile first & RWD
-- Git usage
-- Web Performance Optimization
-- Technical knowledge
-- Layout knowledge (HTML5 y CSS3)
+Muchas gracías, ha estado muy interesante esta prueba técnica 😃. 
