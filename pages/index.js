@@ -1,19 +1,13 @@
-import { useEffect } from 'react'
-import { useFirestore } from '../src/context/FirestoreContext'
+import Composition from '../src/components/Composition'
+import MaterialMenu from '../src/components/MaterialMenu'
 
-export default function Home () {
-  const { getPointsData } = useFirestore()
-
-  useEffect(() => {
-    getPointsData()
-      .then(points => {
-        console.log(points)
-      })
-  }, [])
-
+const Home = () => {
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen py-2'>
-      ESTUDIO CACTUS VISUALIZER TEST
+    <div className='relative flex flex-col items-center justify-center min-h-screen'>
+      <MaterialMenu />
+      <Composition />
     </div>
   )
 }
+
+export default Home
