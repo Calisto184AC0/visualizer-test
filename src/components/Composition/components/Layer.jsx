@@ -3,6 +3,7 @@ const Layer = ({ src, alt }) => (
     src={src}
     alt={alt}
     className='absolute z-10 w-full'
+    aria-label='layer'
   />
 )
 

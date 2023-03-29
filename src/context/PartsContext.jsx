@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react'
 import useInitParts from '../hooks/useInitParts'
 
-const PartsContext = createContext(null)
+export const PartsContext = createContext(null)
 
 export const useParts = () => {
   const context = useContext(PartsContext)

@@ -8,6 +8,7 @@ const Point = ({ name, coordX, coordY, ...otherProps }) => {
         top: `${coordY}%`,
         left: `${coordX}%`
       }}
+      aria-label='point'
       {...otherProps}
     />
   )
