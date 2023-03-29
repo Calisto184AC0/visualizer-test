@@ -1,11 +1,11 @@
 import '../styles/globals.css'
-import { FirestoreProvider } from '../src/context/FirestoreContext'
+import { PartsProvider } from '../src/context/PartsContext'
 
 function MyApp ({ Component, pageProps }) {
   return (
-    <FirestoreProvider>
+    <PartsProvider>
       <Component {...pageProps} />
-    </FirestoreProvider>
+    </PartsProvider>
   )
 }
 
