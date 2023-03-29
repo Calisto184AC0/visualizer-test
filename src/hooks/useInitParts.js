@@ -5,6 +5,8 @@ import firestore from '../utils/firestoreInstance'
 const useInitParts = () => {
   const [points, setPoints] = useState([])
   const [materials, setMaterials] = useState({})
+  const [selectedIndexes, setSelectedIndexes] = useState({})
+  const [selectedPart, setSelectedPart] = useState('')
 
   const initParts = async () => {
     const pointsCol = collection(firestore, 'points')
@@ -28,6 +30,10 @@ const useInitParts = () => {
         ...prevMaterials,
         [pointDoc.id]: materialsData
       }))
+      setSelectedIndexes(prevSelectedIndexes => ({
+        ...prevSelectedIndexes,
+        [pointDoc.id]: 0
+      }))
     }
   }
 
@@ -40,7 +46,14 @@ const useInitParts = () => {
     }
   }, [])
 
-  return { points, materials }
+  return {
+    points,
+    materials,
+    setSelectedIndexes,
+    selectedIndexes,
+    selectedPart,
+    setSelectedPart
+  }
 }
 
 export default useInitParts

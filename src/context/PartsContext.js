@@ -12,14 +12,10 @@ export const useParts = () => {
 }
 
 export const PartsProvider = ({ children }) => {
-  const { points, materials } = useInitParts()
+  const config = useInitParts()
 
   return (
-    <PartsContext.Provider value={{
-      points,
-      materials
-    }}
-    >
+    <PartsContext.Provider value={config}>
       {children}
     </PartsContext.Provider>
   )
